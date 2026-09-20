@@ -36,6 +36,3 @@ def commit(message):
     )
 
     print(f"Committed {commit_id[:7]}")
-
-if __name__ == "__main__":
-    commit("Initial commit")

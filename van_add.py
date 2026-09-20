@@ -33,8 +33,3 @@ def add(filename):
 
     print(f"Added {filename}")
 
-
-if __name__ == "__main__":
-    import sys
-    add("hello.txt")
-
