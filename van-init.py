@@ -10,3 +10,8 @@ def init():
 
 
     print("initialized van repository")
+
+
+if __name__ == "__main__":
+
+    init()
