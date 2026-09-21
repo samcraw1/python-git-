@@ -2,6 +2,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from van_ignore import is_ignored
+
 
 def status():
     index_path = Path(".van/index.json")
@@ -17,9 +19,15 @@ def status():
     modified = []
     
 
+
     #check every tracked file
+
+   
+
     for filename, stored_hash in index.items():
         path = Path(filename)
+        if is_ignored(filename):
+            continue
 
         # File was deleted
         if not path.exists():
@@ -39,7 +47,7 @@ def status():
     untracked = []
 
     for filename in Path(".").iterdir():
-        if filename.is_file() and filename.name not in index:
+        if filename.is_file() and filename.name not in index and not is_ignored(filename.name):
             untracked.append(filename.name)
 
     if modified:
