@@ -9,6 +9,7 @@ from van_add import add
 from van_commit import commit
 from van_log import log
 from van_status import status
+from van_checkout import checkout
 from git_diff import diff
 
 parser = argparse.ArgumentParser(prog="van")
@@ -19,6 +20,8 @@ subparsers = parser.add_subparsers(dest="command")
 
 #van init
 subparsers.add_parser("init", help="Initialize a new VAN repository")
+#van checkout
+subparsers.add_parser("checkout", help="Checkout the latest commit")
 
 #van status
 subparsers.add_parser("status", help="Show the status of the working directory")
@@ -60,6 +63,8 @@ elif args.command == "status":
 
 elif args.command == "diff":
     diff(args.filename)
+elif args.command == "checkout":
+    checkout()
 
 else: 
     parser.print_help()
